@@ -1,5 +1,8 @@
 package com.uca.apps.isi.nct.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +12,12 @@ import android.widget.TextView;
 import java.util.List;
 
 import com.uca.apps.isi.nct.R;
+import com.uca.apps.isi.nct.activities.DetailComplantActivity;
 import com.uca.apps.isi.nct.models.Complaint;
 
 public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.ViewHolder> {
     private List<Complaint> complaints;
+    private Context context;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -21,16 +26,20 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
         // each data item is just a string in this case
         public TextView title;
         public TextView description;
+        public CardView card;
+
         public ViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             description = view.findViewById(R.id.description);
+            card = view.findViewById(R.id.card);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ComplaintsAdapter(List<Complaint> complaints) {
+    public ComplaintsAdapter(Context context, List<Complaint> complaints) {
         this.complaints = complaints;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -54,6 +63,13 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
         holder.title.setText(complaint.getTitle());
         holder.description.setText(complaint.getDescription());
 
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailComplantActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
