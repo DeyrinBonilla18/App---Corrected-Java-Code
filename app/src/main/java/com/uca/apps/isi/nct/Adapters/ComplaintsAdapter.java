@@ -60,7 +60,7 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Complaint complaint = complaints.get(position);
+        final Complaint complaint = complaints.get(position);
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.title.setText(complaint.getTitle());
@@ -70,6 +70,7 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailComplantActivity.class);
+                intent.putExtra("id", complaint.getId());
                 context.startActivity(intent);
             }
         });

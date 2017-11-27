@@ -9,6 +9,7 @@ import retrofit2.http.Path;
  */
 
 public class Complaint {
+    private int id;
     private String title;
     private String description;
     private int categoryId;
@@ -17,6 +18,14 @@ public class Complaint {
     private Location location;
     private String createdAt;
     private List<Picture> pictures;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Location getLocation() {
         return location;
