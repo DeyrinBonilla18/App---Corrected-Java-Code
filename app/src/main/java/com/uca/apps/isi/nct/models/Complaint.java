@@ -1,5 +1,9 @@
 package com.uca.apps.isi.nct.models;
 
+import java.util.List;
+
+import retrofit2.http.Path;
+
 /**
  * Created by moisolutions on 20/10/17.
  */
@@ -12,6 +16,7 @@ public class Complaint {
     private boolean enabled;
     private Location location;
     private String createdAt;
+    private List<Picture> pictures;
 
     public Location getLocation() {
         return location;
@@ -67,5 +72,13 @@ public class Complaint {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
     }
 }

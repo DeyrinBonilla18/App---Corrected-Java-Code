@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.uca.apps.isi.nct.R;
 import com.uca.apps.isi.nct.activities.DetailComplantActivity;
 import com.uca.apps.isi.nct.models.Complaint;
@@ -26,6 +27,7 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
         // each data item is just a string in this case
         public TextView title;
         public TextView description;
+        public SimpleDraweeView picture;
         public CardView card;
 
         public ViewHolder(View view) {
@@ -33,6 +35,7 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
             title = view.findViewById(R.id.title);
             description = view.findViewById(R.id.description);
             card = view.findViewById(R.id.card);
+            picture = view.findViewById(R.id.pictures);
         }
     }
 
@@ -70,6 +73,11 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
                 context.startActivity(intent);
             }
         });
+
+
+        if (complaint.getPictures().size() != 0){
+            holder.picture.setImageURI(complaint.getPictures().get(0).getUrl());
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
