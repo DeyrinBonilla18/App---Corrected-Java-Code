@@ -24,7 +24,6 @@
     <string name="activity_main_name_title">Nombre</string>
 
 
-
     <!--Tour-->
 
     <string name="welcome_text">!Te damos la bienvenida a Hydro App!</string>
@@ -53,10 +52,6 @@
     <string name="main_drawer_communicate">Communicate </string>
     <string name="main_drawer_share">Share</string>
     <string name="main_drawer_Send">Send</string>
-
-
-
-
 
 
 </resources>

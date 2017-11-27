@@ -67,7 +67,7 @@ public class ComplaintsFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Complaint>> call, Response<List<Complaint>> response) {
                 if(response.body() != null) {
-                    ComplaintsAdapter complaintsAdapter = new ComplaintsAdapter(response.body());
+                    ComplaintsAdapter complaintsAdapter = new ComplaintsAdapter(getContext(), response.body());
                     recyclerView.setAdapter(complaintsAdapter);
                 }
                 else{
@@ -79,7 +79,6 @@ public class ComplaintsFragment extends Fragment {
             @Override
             public void onFailure(Call<List<Complaint>> call, Throwable t) {
                 Log.e("xD", t.getMessage());
-
             }
         });
     }
